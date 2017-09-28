@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script src="./js/jquery-1.8.3.min.js"></script>
+<script src="./js/gVerify.js"></script>
+<!-- <script src="./js/gVerifydq.js"></script> -->
+<script src="./js/excanvas.js"></script>
+</head>
+<body>
+     <li class="clearfix containerfox" style="overflow: hidden">
+                <div id="v_container" style="width: 127px;height: 50px;float: right;overflow: hidden;">
+                    　　　　　　　　
+                    <canvas id="verifyCanvas" width="125" height="50"
+                            style="cursor: pointer;margin-top: -31px;float: left;"></canvas>
+                    　　　　　　
+                </div>
+                <input type="text" id="code_input" class="txtVerification">
+                <p>验证码：</p>
+                <b class="showqwe">*账号或密码错误，请重新输入</b>
+                <button id="my_button">登录</button>
+            </li>
+	
+</body>
+<script>
+$(function(){
+	 var verifyCode = new GVerify("v_container");
+        document.getElementById("my_button").onclick = function(){
+            var res = verifyCode.validate(document.getElementById("code_input").value);
+            if(res){
+                alert("验证正确");
+            }else{
+                alert("验证码错误");
+            }
+        }
+})
+</script>
+</html>
